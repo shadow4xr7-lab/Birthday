@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I ❤️ Aliha - I'm So Sorry & I Love You Forever</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 20px;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 20px #ff6b9d; }
+            to { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 30px #ff1493; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* Love Button */
+        .love-btn {
+            background: linear-gradient(45deg, #ff6b9d, #ff1493);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255,107,157,0.4);
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .love-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255,107,157,0.6);
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Apology Section */
+        .apology {
+            background: rgba(255,255,255,0.95);
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .apology h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+
+        .apology p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Love Messages */
+        .love-messages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .message-card {
+            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(255,20,147,0.1));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255,107,157,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .message-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255,107,157,0.3);
+        }
+
+        .message-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* Interactive Heart Trail */
+        .heart-trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section { margin: 40px auto; }
+            .apology { padding: 40px 20px; }
+            .love-messages { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts" id="hearts"></div>
+    <div class="heart-trail" id="heartTrail"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1 class="name">Aliha</h1>
+        <p class="subtitle">My Everything, My Love, My World 🌸</p>
+        <button class="love-btn" onclick="showLoveExplosion()">I ❤️ You Forever!</button>
+    </div>
+
+    <!-- Apology Section -->
+    <div class="section">
+        <div class="apology">
+            <h2>I'm So Sorry, My Love 💔</h2>
+            <p>
+                Aliha, I'm truly sorry for upsetting you. You mean everything to me and I hate that I made you sad. 
+                Your smile lights up my world, and I promise to always cherish and protect your beautiful heart. 
+                Please forgive me, my love. You're my sunshine, my happiness, my forever. 🌹
+            </p>
+            <div class="love-messages">
+                <div class="message-card" onclick="playSweetSound()">
+                    <div class="message-emoji">💕</div>
+                    <h3>You Are Perfect</h3>
+                    <p>Every moment with you feels like a dream</p>
+                </div>
+                <div class="message-card" onclick="playSweetSound()">
+                    <div class="message-emoji">🌸</div>
+                    <h3>My Princess</h3>
+                    <p>You deserve all the love in the world</p>
+                </div>
+                <div class="message-card" onclick="playSweetSound()">
+                    <div class="message-emoji">⭐</div>
+                    <h3>Forever Mine</h3>
+                    <p>I'll love you till the stars stop shining</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button onclick="toggleMusic()" id="musicBtn">🎵 Play Love Song</button>
+        <audio id="loveSong" loop>
+            <!-- Add your favorite romantic song here -->
+        </audio>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['💖', '💕', '💗', '💓', '💞'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Heart trail on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.innerHTML = '💖';
+            trail.style.position = 'fixed';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.pointerEvents = 'none';
+            trail.style.fontSize = '20px';
+            trail.style.zIndex = '5';
+            trail.style.transition = 'all 0.5s ease';
+            document.getElementById('heartTrail').appendChild(trail);
+
+            setTimeout(() => {
+                trail.remove();
+            }, 500);
+        });
+
+        // Love explosion
+        function showLoveExplosion() {
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = ['💖', '💕', '💗'][Math.floor(Math.random() * 3)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = '30px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'float 2s ease-out forwards';
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 50);
+            }
+        }
+
+        // Sweet sound effect (browser beep)
+        function playSweetSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        // Music player
+        let isPlaying = false;
+        function toggleMusic() {
+            const audio = document.getElementById('loveSong');
+            const btn = document.getElementById('musicBtn');
+            
+            if(isPlaying) {
+                audio.pause();
+                btn.textContent = '🎵 Play Love Song';
+                isPlaying = false;
+            } else {
+                audio.play();
+                btn.textContent = '⏸️ Pause';
+                isPlaying = true;
+            }
+        }
+
+        // Auto-create initial hearts
+        window.onload = () => {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(createHeart, i * 500);
+            }
+        };
+    </script>
+</body>
+</html>
